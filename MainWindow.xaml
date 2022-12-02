@@ -1,0 +1,36 @@
+﻿<Window x:Class="Microsoft.Samples.Kinect.CoordinateMappingBasics.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+         xmlns:local="clr-namespace:Microsoft.Samples.Kinect.DiscreteGestureBasics"
+        Title="Coordinate Mapping Basics" 
+        Height="600" Width="700" 
+        Closing="MainWindow_Closing">
+
+
+    <Grid Margin="10 0 10 0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <Viewbox Grid.Row="1" HorizontalAlignment="Center">
+            <Grid Name="CompositeImage">
+                <Image x:Name="backgroundImg" Source="Images\Background3.jpg"  Stretch="UniformToFill" />
+                <Image Source="{Binding Portrait}" Stretch="UniformToFill" />
+                <Canvas Name="canvas"/>
+                <Image Source="{Binding ImageSource}" Stretch="Uniform" />
+                <Image x:Name="pineapple" Source="Images\0.jpg" Stretch="Uniform" Margin="10,366,739,10" RenderTransformOrigin="0.5,0.5" Visibility="Hidden"/>
+            </Grid>
+        </Viewbox>
+
+        <StatusBar Grid.Row="2" HorizontalAlignment="Stretch" Name="statusBar" VerticalAlignment="Bottom" Background="White">
+            <StatusBarItem Content="{Binding StatusText}" />
+        </StatusBar>
+        <CheckBox x:Name="showpineapple" Click="ShowPineapple" Margin="436,10,208,29"/>
+        <ComboBox Name="backgroundSelection" SelectedIndex="{Binding BackgroundSelectedIndex}" SelectionChanged="SetBackground"  HorizontalAlignment="Right" Margin="0,10,344,0" VerticalAlignment="Top" Width="206" Height="37"/>
+    </Grid>
+
+
+
+</Window>
